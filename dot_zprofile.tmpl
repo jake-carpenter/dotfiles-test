@@ -1,0 +1,54 @@
+# Homebrew init
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# dotnet tools
+export PATH="$PATH:$HOME/.dotnet/tools"
+
+# fastlane for expo/eas build
+export PATH="$PATH:/usr/local/bin/fastlane"
+
+# add local bin to PATH - fig complained about this
+export PATH="$PATH:~/.local/bin"
+
+# Android stuff
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
+export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
+export ANDROID_HOME=$ANDROID_SDK_ROOT
+export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
+export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
+export PATH=$PATH:$ANDROID_SDK_ROOT/build-tools
+export PATH=$PATH:$ANDROID_SDK_ROOT/tools
+export PATH=$PATH:$ANDROID_SDK_ROOT/tools/bin
+export PATH=$PATH:$JAVA_HOME/bin
+
+# Added by Jetbrains Toolbox App
+export PATH="$PATH:$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
+
+# RBEnv init
+eval "$(rbenv init -)"
+
+# pyenv stuff
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+# Random settings
+export VISUAL=nvim
+export EDITOR=nvim
+export GITIN_LINESIZE=20
+
+# Brew stuff. Don't auto update on every command because it's slow
+export HOMEBREW_NO_AUTO_UPDATE=1
+
+# Added by OrbStack: command-line tools and integration
+source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+
+{{- if eq .chezmoi.config.destDir "/Users/a089947" }}
+
+# [WORK] CA Cert configuration so Netskope doesn't break things with self-signed certs
+export NODE_EXTRA_CA_CERTS="/Library/Application Support/Netskope/STAgent/data/nscacert_combined.pem"
+export REQUESTS_CA_BUNDLE="/Library/Application Support/Netskope/STAgent/data/nscacert_combined.pem"
+export CURL_CA_BUNDLE="/Library/Application Support/Netskope/STAgent/data/nscacert_combined.pem"
+export GIT_SSL_CAPATH="/Library/Application Support/Netskope/STAgent/data/nscacert_combined.pem"
+
+{{- end }}
