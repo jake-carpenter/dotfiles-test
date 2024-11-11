@@ -52,5 +52,11 @@
         "strikethrough": { "color": "#ff00b0" }
       }
     }
+  },
+  "languages": {
+    "TOML": {
+      "tab_size": 2,
+      "hard_tabs": false
+    }
   }
 }
