@@ -1,0 +1,44 @@
+source /opt/homebrew/share/antigen/antigen.zsh
+antigen bundle aghozak/zsh-z
+antigen apply
+
+# Custom PS1 (mostly for IDE integrated terminals)
+PS1='%F{blue}%~ %(?.%F{green}.%F{red})%#%f '
+
+# My aliases
+alias vim="nvim"
+alias vi="nvim"
+alias ls="eza --icons --git"
+alias ll="eza --icons -l -a --git --no-user"
+alias lt="eza --icons --tree"
+alias cat="bat"
+alias p="pnpm"
+alias gi="gitin"
+alias chez="chezmoi"
+
+export EDITOR=nvim
+export PATH=$PATH:$HOME/.maestro/bin
+
+# pnpm
+export PNPM_HOME="$HOME/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+# bun completions
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+if [ -f "$HOME/Library/Application Support/dnvm/env" ]; then
+    . "$HOME/Library/Application Support/dnvm/env"
+fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
