@@ -1,0 +1,56 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run the `open default settings` command
+// from the command palette or from `Zed` application menu.
+{
+  "features": {
+    "inline_completion_provider": "none"
+  },
+  "theme": "Catppuccin Frappé",
+  "ui_font_size": 16,
+  "ui_font_family": "Atkinson Hyperlegible",
+  "buffer_font_family": "MonaspiceNe Nerd Font",
+  "buffer_font_size": 13,
+  "buffer_font_features": {
+    "ss01": true,
+    "ss02": true,
+    "ss03": true,
+    "ss04": true,
+    "ss05": true,
+    "ss06": true,
+    "ss07": true,
+    "ss08": true,
+    "calt": true,
+    "dlig": true
+  },
+  "restore_on_startup": "none",
+  "format_on_save": "on",
+  "file_types": {},
+  "experimental.theme_overrides": {
+    "syntax": {
+      "keyword": {
+        "font_weight": 600
+      },
+      "function": {
+        "font_style": "italic"
+      },
+      "comment": {
+        "font_style": "italic",
+        "font_weight": 600
+      },
+      "type": {
+        "font_weight": 600
+      },
+      "punctuation.bracket": {
+        "font_weight": 100
+      },
+      "string": {
+        "strikethrough": { "color": "#ff00b0" }
+      }
+    }
+  }
+}
