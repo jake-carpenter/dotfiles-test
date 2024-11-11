@@ -1,0 +1,5 @@
+github.com:
+    user: jake-carpenter
+    git_protocol: ssh
+    users:
+        jake-carpenter: {}
