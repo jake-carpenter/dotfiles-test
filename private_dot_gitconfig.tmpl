@@ -4,21 +4,21 @@
   email = jcarpenter@mwiah.com
 
 [merge]
-	tool = Kaleidoscope
+  tool = Kaleidoscope
 
 [diff]
   tool = Kaleidoscope
 
 [difftool "Kaleidoscope"]
-	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+  cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 
 [mergetool "Kaleidoscope"]
-	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-	trustExitCode = true
+  cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+  trustExitCode = true
 
 [difftool]
-	prompt = false
-	trustExitCode = true
+  prompt = false
+  trustExitCode = true
 
 [http]
   sslVerify = false
@@ -53,21 +53,21 @@
   format = ssh
 
 [push]
-	autoSetupRemote = true
+  autoSetupRemote = true
 
 [difftool "Kaleidoscope"]
-	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+  cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 
 [mergetool "Kaleidoscope"]
-	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-	trustExitCode = true
+  cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+  trustExitCode = true
 
 [difftool]
-	prompt = false
-	trustExitCode = true
+  prompt = false
+  trustExitCode = true
 
 [mergetool]
-	prompt = false
+  prompt = false
 
 [core]
   pager = delta --tabs 4
@@ -156,4 +156,3 @@
 
   # Diff side-by-side
   diffs = "!git -c delta.side-by-side=true diff"
- 
