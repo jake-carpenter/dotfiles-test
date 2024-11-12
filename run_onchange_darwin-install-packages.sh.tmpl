@@ -1,0 +1,26 @@
+{{ if eq .chezmoi.os "darwin" -}}
+#!/bin/bash
+
+echo 'Installing common brew packages'
+
+brew bundle --no-lock --file=/dev/stdin <<EOF
+{{ range .packages.darwin.common.brews -}}
+brew {{ . | quote }}
+{{ end -}}
+{{ range .packages.darwin.common.casks -}}
+cask {{ . | quote }}
+{{ end -}}
+EOF
+{{ end -}}
+
+{{- if ne .chezmoi.config.destDir "/Users/a089947" }}
+
+brew bundle --no-lock --file=/dev/stdin <<EOF
+{{ range .packages.darwin.home.brews -}}
+brew {{ . | quote }}
+{{ end -}}
+{{ range .packages.darwin.home.casks -}}
+cask {{ . | quote }}
+{{ end -}}
+EOF
+{{ end -}}
