@@ -13,8 +13,6 @@ cask {{ . | quote }}
 {{ end -}}
 EOF
 
-{{ end }}
-
 {{ if ne .chezmoi.config.destDir "/Users/a089947" }}
 
 brew bundle --no-lock --file=/dev/stdin <<EOF
@@ -25,5 +23,7 @@ brew {{ . | quote }}
 cask {{ . | quote }}
 {{ end -}}
 EOF
+
+{{ end }}
 
 {{ end }}
