@@ -2,12 +2,12 @@
 
 {{ if eq .chezmoi.os "linux" }}
 
-  echo 'Installing zsh...'
+  echo '\n\n>>> Installing zsh...'
 
   {{ if eq .chezmoi.osRelease.idLike "debian" }}
     sudo apt install zsh
   {{ else }}
-    echo "This distro is not supported yet..."
+    echo "  This distro is not supported yet..."
   {{ end }}
 
 {{ end }}

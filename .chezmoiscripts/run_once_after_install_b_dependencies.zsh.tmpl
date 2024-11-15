@@ -1,18 +1,23 @@
 #!/bin/zsh
 
-### Install / update nvm
+### Install antigen
+echo "\n\n>>> Installing antigen..."
 
-echo ">>> Installing nvm..."
+curl -s -L git.io/antigen > antigen.zsh
+
+
+### Install / update nvm
+echo "\n\n>>> Installing nvm..."
 nvm_dir=~/.nvm
 
 if [ -d "$nvm_dir" ]; then
   cd $nvm_dir
-  current_version=$(git describe --tags) 
+  current_version=$(git describe --tags)
   echo "  Found existing nvm installation: $current_version"
-  
+
   git fetch --tags
   latest_version=$(git describe --tags $(git rev-list --tags --max-count=1))
-  
+
   if [[ "$latest_version" != "$current_version" ]]; then
     echo "  Found nvm update $latest_version. Updating..."
     git checkout $latest_version
@@ -22,11 +27,11 @@ if [ -d "$nvm_dir" ]; then
 else
   git clone https://github.com/nvm-sh/nvm.git $nvm_dir
   cd $nvm_dir
-  
+
   git fetch --tags
   latest_version=$(git describe --tags $(git rev-list --tags --max-count=1))
-  
-  git checkout $latest_version
+
+  git checkout $latest_version --quiet
 
   echo "  Installed nvm $latest_version"
 fi
