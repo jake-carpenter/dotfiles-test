@@ -1,6 +1,5 @@
 source /opt/homebrew/share/antigen/antigen.zsh
-antigen bundle aghozak/zsh-z
-antigen apply
+antigen init ~/.antigenrc
 
 # Custom PS1 (mostly for IDE integrated terminals)
 PS1='%F{blue}%~ %(?.%F{green}.%F{red})%#%f '

@@ -1,0 +1,4 @@
+antigen bundle aghozak/zsh-z
+
+antigen apply
+
