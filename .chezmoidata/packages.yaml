@@ -21,6 +21,7 @@ packages:
         - "git"
         - "git-delta"
         - "gitin"
+        - "helix"
         - "hyperfine"
         - "jq"
         - "pyenv"
