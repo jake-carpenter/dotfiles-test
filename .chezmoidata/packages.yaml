@@ -58,6 +58,7 @@ packages:
         - "numi"
         - "obs"
         - "orbstack"
+        - "pearcleaner"
         - "polypane"
         - "postman"
         - "proxyman"
