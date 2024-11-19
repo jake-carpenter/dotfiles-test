@@ -2,7 +2,7 @@ packages:
   darwin:
     common:
       brews:
-        - "antigen"
+        - "antidote"
         - "bat"
         - "bat-extras"
         - "bat-extras-batdiff"
