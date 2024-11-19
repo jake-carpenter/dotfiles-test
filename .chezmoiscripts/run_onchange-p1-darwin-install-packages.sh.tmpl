@@ -1,6 +1,12 @@
 {{ if eq .chezmoi.os "darwin" -}}
 #!/bin/zsh
 
+echo '\n\n>>> Tapping formulae...'
+brew tap isacikgoz/taps
+brew tap eth-p/software
+brew tap osx-cross/avr
+brew tap qmk/qmk
+
 echo '\n\n>>> Installing common brew packages'
 
 brew bundle --no-lock --file=/dev/stdin <<EOF
