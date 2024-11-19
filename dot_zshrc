@@ -1,4 +1,6 @@
+# Antidote - zsh plugin manager
 source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
+antidote load
 
 # Custom PS1 (mostly for IDE integrated terminals)
 PS1='%F{blue}%~ %(?.%F{green}.%F{red})%#%f '
