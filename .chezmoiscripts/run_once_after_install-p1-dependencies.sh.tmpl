@@ -36,5 +36,11 @@ source ~/.zshrc
 nvm install --lts
 nvm use --lts
 
+echo -e '\n\n>>> Installing bun...'
+curl -fsSL https://bun.sh/install | bash
+
+echo -e '\n\n>>> Installing pnpm...'
+curl -fsSL https://get.pnpm.io/install.sh | sh -
+
 echo -e '\n\n>>> Installing dnvm...'
 curl --proto '=https' -sSf https://dnvm.net/install.sh | sh
