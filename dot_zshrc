@@ -5,8 +5,8 @@ antigen init ~/.antigenrc
 PS1='%F{blue}%~ %(?.%F{green}.%F{red})%#%f '
 
 # My aliases
-alias vim="nvim"
-alias vi="nvim"
+alias vim="hx"
+alias vi="hx"
 alias ls="eza --icons --git"
 alias ll="eza --icons -l -a --git --no-user"
 alias lt="eza --icons --tree"
@@ -15,8 +15,7 @@ alias p="pnpm"
 alias gi="gitin"
 alias chez="chezmoi"
 
-export EDITOR=nvim
-export PATH=$PATH:$HOME/.maestro/bin
+export EDITOR=hx
 
 # pnpm
 export PNPM_HOME="$HOME/Library/pnpm"
