@@ -1,0 +1,73 @@
+#!/bin/bash
+
+### Install
+echo -e "\n\n>>> Checking for nvm..."
+nvm_dir=~/.nvm
+
+if [ -d "$nvm_dir" ]; then
+  cd $nvm_dir
+  nvm_version=$(git describe --tags)
+  echo -e "  Found existing nvm installation: $nvm_version"
+else
+  echo -e "  No existing installation found"
+  echo -e "\n\n>>> Installing nvm..."
+
+  git clone https://github.com/nvm-sh/nvm.git $nvm_dir
+  cd $nvm_dir
+
+  git fetch --tags
+  latest_version=$(git describe --tags $(git rev-list --tags --max-count=1))
+
+  git checkout $latest_version --quiet
+
+  echo "  Installed nvm $latest_version"
+
+  echo -e "\n\n>>> Installing NodeJS LTS"
+
+  source ~/.zshrc
+  nvm install --lts
+  nvm use --lts
+fi
+
+### Install bun
+echo -e "\n\n>>> Checking for bun..."
+if [ -x "$(command -v bun)" ]; then
+  bun_version=$(bun --version)
+  echo -e "  Founding existing bun installation: $bun_version"
+else
+  echo -e "No existing installation found"
+  echo -e "\n\n>>> Installing bun..."
+  curl -fsSL https://bun.sh/install | bash
+fi
+
+### Install bun
+echo -e "\n\n>>> Checking for bun..."
+if [ -x "$(command -v bun)" ]; then
+  bun_version=$(bun --version)
+  echo -e "  Founding existing bun installation: $bun_version"
+else
+  echo -e "No existing installation found"
+  echo -e "\n\n>>> Installing bun..."
+  curl -fsSL https://bun.sh/install | bash
+fi
+
+### Install pnpm
+echo -e "\n\n>>> Checking for pnpm..."
+if [ -x "$(command -v pnpm)" ]; then
+  pnpm_version=$(pnpm --version)
+  echo -e "  Founding existing pnpm installation: $pnpm_version"
+else
+  echo -e "No existing installation found"
+  echo -e "\n\n>>> Installing pnpm..."
+  curl -fsSL https://get.pnpm.io/install.sh | sh -
+fi
+
+### Install pnpm
+echo -e "\n\n>>> Checking for dnvm..."
+if [ -x "$(command -v dnvm)" ]; then
+  echo -e "  Founding existing dnvm installation"
+else
+  echo -e "No existing installation found"
+  echo -e "\n\n>>> Installing dnvm..."
+  curl --proto '=https' -sSf https://dnvm.net/install.sh | sh
+fi

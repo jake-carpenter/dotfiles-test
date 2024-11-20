@@ -20,6 +20,8 @@ EOF
 
 {{ if ne .chezmoi.config.destDir "/Users/a089947" }}
 
+echo '\n\n>>> Installing home-only brew packages'
+
 brew bundle --no-lock --file=/dev/stdin <<EOF
 {{ range .packages.darwin.home.brews -}}
 brew {{ . | quote }}
