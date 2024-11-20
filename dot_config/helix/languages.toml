@@ -9,6 +9,8 @@ vscode-css-language-server = { command = "vscode-css-language-server", args = ["
 vscode-html-language-server = { command = "vscode-html-language-server", args = ["--stdio"], config = { provideFormatter = true } }
 vscode-json-language-server = { command = "vscode-json-language-server", args = ["--stdio"], config = { provideFormatter = true, json = { validate = { enable = true } } } }
 
+### Bash stuff
+
 [[language]]
 name = "bash"
 scope = "source.bash"
@@ -69,6 +71,9 @@ indent = { tab-width = 2, unit = "  " }
 name = "bash"
 source = { git = "https://github.com/tree-sitter/tree-sitter-bash", rev = "f8fb3274f72a30896075585b32b0c54cad65c086" }
 
+
+### Docker / Docker compose
+
 [[language]]
 name = "dockerfile"
 scope = "source.dockerfile"
@@ -95,6 +100,8 @@ language-servers = [ "docker-langserver" ]
 [[grammar]]
 name = "dockerfile"
 source = { git = "https://github.com/camdencheek/tree-sitter-dockerfile", rev = "8ee3a0f7587b2bd8c45c8cb7d28bd414604aec62" }
+
+### JSON
 
 [[language]]
 name = "json"
@@ -128,6 +135,8 @@ language-servers = [ "vscode-json-language-server" ]
 auto-format = true
 indent = { tab-width = 2, unit = "  " }
 
+### CSS
+
 [[language]]
 name = "css"
 scope = "source.css"
@@ -156,6 +165,8 @@ indent = { tab-width = 2, unit = "  " }
 name = "scss"
 source = { git = "https://github.com/serenadeai/tree-sitter-scss", rev = "c478c6868648eff49eb04a4df90d703dc45b312a" }
 
+### HTML
+
 [[language]]
 name = "html"
 scope = "text.html.basic"
@@ -169,6 +180,8 @@ indent = { tab-width = 2, unit = "  " }
 [[grammar]]
 name = "html"
 source = { git = "https://github.com/tree-sitter/tree-sitter-html", rev = "29f53d8f4f2335e61bf6418ab8958dac3282077a" }
+
+### VS Code LS config
 
 [language-server.vscode-eslint-language-server]
 command = "vscode-eslint-language-server"
@@ -191,6 +204,8 @@ enable = true
 
 [language-server.vscode-eslint-language-server.config.workingDirectory]
 mode = "location"
+
+### Markdown
 
 [[language]]
 name = "markdown"
@@ -216,3 +231,88 @@ grammar = "markdown_inline"
 [[grammar]]
 name = "markdown_inline"
 source = { git = "https://github.com/tree-sitter-grammars/tree-sitter-markdown", rev = "62516e8c78380e3b51d5b55727995d2c511436d8", subpath = "tree-sitter-markdown-inline" }
+
+### git-related
+
+[[language]]
+name = "git-commit"
+scope = "git.commitmsg"
+file-types = [{ glob = "COMMIT_EDITMSG" }]
+comment-token = "#"
+indent = { tab-width = 2, unit = "  " }
+rulers = [51, 73]
+text-width = 72
+
+[[grammar]]
+name = "git-commit"
+source = { git = "https://github.com/the-mikedavis/tree-sitter-git-commit", rev = "6f193a66e9aa872760823dff020960c6cedc37b3" }
+
+[[language]]
+name = "diff"
+scope = "source.diff"
+file-types = ["diff", "patch", "rej"]
+injection-regex = "diff"
+comment-token = "#"
+indent = { tab-width = 2, unit = "  " }
+
+[[grammar]]
+name = "diff"
+source = { git = "https://github.com/the-mikedavis/tree-sitter-diff", rev = "fd74c78fa88a20085dbc7bbeaba066f4d1692b63" }
+
+[[language]]
+name = "git-rebase"
+scope = "source.gitrebase"
+file-types = [{ glob = "git-rebase-todo" }]
+injection-regex = "git-rebase"
+comment-token = "#"
+indent = { tab-width = 2, unit = "y" }
+
+[[grammar]]
+name = "git-rebase"
+source = { git = "https://github.com/the-mikedavis/tree-sitter-git-rebase", rev = "d8a4207ebbc47bd78bacdf48f883db58283f9fd8" }
+
+[[language]]
+name = "regex"
+scope = "source.regex"
+injection-regex = "regex"
+file-types = ["regex", { glob = ".Rbuildignore" }]
+
+[[grammar]]
+name = "regex"
+source = { git = "https://github.com/tree-sitter/tree-sitter-regex", rev = "e1cfca3c79896ff79842f057ea13e529b66af636" }
+
+[[language]]
+name = "git-config"
+scope = "source.gitconfig"
+file-types = [{ glob = ".gitmodules" }, { glob = ".gitconfig" }, { glob = ".git/config" }, { glob = ".config/git/config" }]
+injection-regex = "git-config"
+comment-token = "#"
+indent = { tab-width = 4, unit = "\t" }
+
+[[grammar]]
+name = "git-config"
+source = { git = "https://github.com/the-mikedavis/tree-sitter-git-config", rev = "9c2a1b7894e6d9eedfe99805b829b4ecd871375e" }
+
+[[language]]
+name = "git-attributes"
+scope = "source.gitattributes"
+file-types = [{ glob = ".gitattributes" }]
+injection-regex = "git-attributes"
+comment-token = "#"
+grammar = "gitattributes"
+
+[[grammar]]
+name = "gitattributes"
+source = { git = "https://github.com/mtoohey31/tree-sitter-gitattributes", rev = "3dd50808e3096f93dccd5e9dc7dc3dba2eb12dc4" }
+
+[[language]]
+name = "git-ignore"
+scope = "source.gitignore"
+file-types = [{ glob = ".gitignore_global" }, { glob = "git/ignore" }, { glob = ".ignore" }, { glob = "CODEOWNERS" }, { glob = ".config/helix/ignore" }, { glob = ".helix/ignore" }, { glob = ".*ignore" }]
+injection-regex = "git-ignore"
+comment-token = "#"
+grammar = "gitignore"
+
+[[grammar]]
+name = "gitignore"
+source = { git = "https://github.com/shunsambongi/tree-sitter-gitignore", rev = "f4685bf11ac466dd278449bcfe5fd01
