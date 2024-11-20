@@ -7,7 +7,7 @@ brew tap eth-p/software
 brew tap osx-cross/avr
 brew tap qmk/qmk
 
-echo '\n\n>>> Installing common brew packages'
+echo '\n\n>>> Installing common brew packages...'
 
 brew bundle --no-lock --file=/dev/stdin <<EOF
 {{ range .packages.darwin.common.brews -}}
@@ -20,7 +20,7 @@ EOF
 
 {{ if ne .chezmoi.config.destDir "/Users/a089947" }}
 
-echo '\n\n>>> Installing home-only brew packages'
+echo '\n\n>>> Installing home-only brew packages...'
 
 brew bundle --no-lock --file=/dev/stdin <<EOF
 {{ range .packages.darwin.home.brews -}}
@@ -33,4 +33,13 @@ EOF
 
 {{ end }}
 
+{{ else -}}
+#!/bin/bash
 {{ end }}
+
+echo -e "\n\n>>> Installing npm packages:"
+{{ range .packages.npm.common }}
+echo -e "  - {{ . }}"
+{{ end }}
+
+npm install --global {{ range .packages.npm.common -}} {{ . | quote }} {{ end -}}
