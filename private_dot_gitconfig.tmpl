@@ -22,10 +22,25 @@
 
 [http]
   sslVerify = false
-{{- else }}
+
+{{- else -}}
+
 [user]
   name = Jake Carpenter
   email = jake@jakecarpenter.dev
+
+[user]
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAZrbQ9/KiToUmY5ybBtSIpklB5MNUgYRYOnUgf0o9US
+
+[gpg]
+  format = ssh
+
+[gpg "ssh"]
+  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+
+[commit]
+  gpgsign = true
+
 {{- end }}
 
 [help]
@@ -48,9 +63,6 @@
   navigate = true    # use n and N to move between diff sections
   light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
   side-by-side = false
-
-[gpg]
-  format = ssh
 
 [push]
   autoSetupRemote = true
