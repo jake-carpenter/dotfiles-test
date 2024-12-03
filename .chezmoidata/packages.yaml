@@ -38,6 +38,9 @@ packages:
         - "bettertouchtool"
         - "cleanshot"
         - "font-monaspace-nerd-font"
+        - "font-ubuntu-mono-nerd-font"
+        - "font-ubuntu-nerd-font"
+        - "font-ubuntu-sans-nerd-font"
         - "zulu@17"
     home:
       brews:
