@@ -48,4 +48,6 @@ export REQUESTS_CA_BUNDLE="/Library/Application Support/Netskope/STAgent/data/ns
 export CURL_CA_BUNDLE="/Library/Application Support/Netskope/STAgent/data/nscacert_combined.pem"
 export GIT_SSL_CAPATH="/Library/Application Support/Netskope/STAgent/data/nscacert_combined.pem"
 
+# Quiets Kiota output during dotnet build
+export KIOTA_TUTORIAL_ENABLED=0
 {{- end }}
