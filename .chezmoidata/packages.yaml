@@ -30,6 +30,7 @@ packages:
         - "rbenv"
         - "rust"
         - "rust-analyzer"
+        - "stats"
         - "superfile"
         - "watchman"
         - "yaml-language-server"
