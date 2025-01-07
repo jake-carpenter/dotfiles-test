@@ -1,0 +1,106 @@
+// Inspired by Coffee and Kush
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "type": "auto",
+    "padding": {
+      "top": 4,
+      "left": 2,
+      "right": 2
+    }
+  },
+  "display": {
+    "separator": " "
+  },
+  "modules": [
+    {
+      "key": "╭─────────────╮",
+      "type": "custom"
+    },
+    {
+      "key": "│ {#33}  User     {#keys}│",
+      "type": "title",
+      "format": "{user-name}@{host-name}"
+    },
+    {
+      "key": "├─────────────┤",
+      "type": "custom"
+    },
+    {
+      "key": "│ {#33}󰇅  Machine  {#keys}│",
+      "type": "host",
+    },
+    {
+      "key": "│ {#33}󰥔  Uptime   {#keys}│",
+      "type": "uptime"
+    },
+    {
+      "key": "│ {#33}󰍛  CPU      {#keys}│",
+      "type": "cpu",
+      "showPeCoreCount": true
+    },
+    {
+      "key": "│ {#33}󰍛  GFX      {#keys}│",
+      "type": "gpu",
+    },
+    {
+      "key": "│ {#33}󰟶  Memory   {#keys}│",
+      "type": "memory"
+    },
+    {
+      "key": "│ {#33}󰉉  SSD      {#keys}│",
+      "type": "disk",
+      "folders": "/"
+    },
+    {
+      "key": "│ {#33}󰍹  Monitor  {#keys}│",
+      "type": "monitor",
+      "format": "{name} - {width}x{height} @ {refresh-rate}Hz"
+    },
+    {
+      "key": "├─────────────┤",
+      "type": "custom"
+    },
+    {
+      "key": "│ {#33}  OS       {#keys}│",
+      "type": "os"
+    },
+    {
+      "key": "│ {#33}  Kernel   {#keys}│",
+      "type": "kernel"
+    },
+    {
+      "key": "│ {#33}  Shell    {#keys}│",
+      "type": "shell"
+    },
+    {
+      "key": "│ {#33}  Terminal {#keys}│",
+      "type": "terminal"
+    },
+    {
+      "key": "│ {#33}  TermFont {#keys}│",
+      "type": "terminalfont"
+    },
+    {
+      "key": "│ {#33}󰏖  Editor   {#keys}│",
+      "type": "editor"
+    },
+    {
+      "key": "│ {#33}󰏖  Packages {#keys}│",
+      "type": "packages"
+    },
+    {
+      "key": "├─────────────┤",
+      "type": "custom"
+    },
+    {
+      "key": "│ {#33}  Palette  {#keys}│",
+      "type": "colors",
+      "symbol": "circle"
+    },
+    {
+      "key": "╰─────────────╯",
+      "type": "custom"
+    }
+  ]
+}

@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=packages:
 packages:
   darwin:
     common:
@@ -16,6 +17,7 @@ packages:
         - "docker"
         - "eza"
         - "fastlane"
+        - "fastfetch"
         - "fzf"
         - "gh"
         - "git"
