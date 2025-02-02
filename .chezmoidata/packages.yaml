@@ -39,6 +39,7 @@ packages:
         - "1password-cli"
         - "bettertouchtool"
         - "cleanshot"
+        - "font-atkinson-hyperlegible"
         - "font-monaspace-nerd-font"
         - "font-ubuntu-mono-nerd-font"
         - "font-ubuntu-nerd-font"
