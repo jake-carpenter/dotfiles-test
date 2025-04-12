@@ -3,23 +3,6 @@
   name = Jake Carpenter
   email = jcarpenter@mwiah.com
 
-[merge]
-  tool = Kaleidoscope
-
-[diff]
-  tool = Kaleidoscope
-
-[difftool "Kaleidoscope"]
-  cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
-
-[mergetool "Kaleidoscope"]
-  cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-  trustExitCode = true
-
-[difftool]
-  prompt = false
-  trustExitCode = true
-
 [http]
   sslVerify = false
 
@@ -42,6 +25,29 @@
   gpgsign = true
 
 {{- end }}
+
+[difftool "Kaleidoscope"]
+cmd = "ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\""
+
+[difftool]
+prompt = false
+trustExitCode = true
+
+[diff]
+  colorMoved = default
+  algorithm = histogram
+  tool = Kaleidoscope
+
+[mergetool "Kaleidoscope"]
+cmd = "ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot"
+trustExitCode = true
+
+[mergetool]
+prompt = false
+
+[merge]
+  conflictstyle = zdiff3
+  tool = Kaleidoscope
 
 [help]
   autocorrect = 15
