@@ -1,1 +1,2 @@
 agkozak/zsh-z
+lukechilds/zsh-nvm

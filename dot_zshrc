@@ -1,3 +1,12 @@
+if [ -n "${ZSH_DEBUGRC+1}" ]; then
+    zmodload zsh/zprof
+fi
+
+# NVM options for the zsh-nvm plugin
+export NVM_COMPLETION=true
+export NVM_LAZY_LOAD=true
+export NVM_AUTO_USE=true
+
 # Antidote - zsh plugin manager
 source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
 antidote load
@@ -18,11 +27,12 @@ alias cat="bat"
 alias p="pnpm"
 alias gi="gitin"
 alias chez="chezmoi"
+alias debugzsh="time ZSH_DEBUGRC=1 zsh -i -c exit"
 
 export EDITOR=hx
 
 # pnpm
-export PNPM_HOME="$HOME/Library/pnpm"
+export PNPM_HOME="/Users/a089947/Library/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
@@ -40,11 +50,6 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 if [ -f "$HOME/Library/Application Support/dnvm/env" ]; then
     . "$HOME/Library/Application Support/dnvm/env"
 fi
-
-# nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Better zsh history
 # https://martinheinz.dev/blog/110
@@ -64,3 +69,7 @@ setopt HIST_VERIFY           # Do not execute immediately upon history expansion
 setopt APPEND_HISTORY        # append to history file (Default)
 setopt HIST_NO_STORE         # Don't store history commands
 setopt HIST_REDUCE_BLANKS    # Remove superfluous blanks from each command line being added to the history.
+
+if [ -n "${ZSH_DEBUGRC+1}" ]; then
+    zprof
+fi
