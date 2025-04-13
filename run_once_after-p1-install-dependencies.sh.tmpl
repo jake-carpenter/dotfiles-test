@@ -1,34 +1,5 @@
 #!/bin/bash
 
-### Install
-echo -e "\n\n>>> Checking for nvm..."
-nvm_dir=~/.nvm
-
-if [ -d "$nvm_dir" ]; then
-  cd $nvm_dir
-  nvm_version=$(git describe --tags)
-  echo -e "  Found existing nvm installation: $nvm_version"
-else
-  echo -e "  No existing installation found"
-  echo -e "\n\n>>> Installing nvm..."
-
-  git clone https://github.com/nvm-sh/nvm.git $nvm_dir
-  cd $nvm_dir
-
-  git fetch --tags
-  latest_version=$(git describe --tags $(git rev-list --tags --max-count=1))
-
-  git checkout $latest_version --quiet
-
-  echo "  Installed nvm $latest_version"
-
-  echo -e "\n\n>>> Installing NodeJS LTS"
-
-  source ~/.zshrc
-  nvm install --lts
-  nvm use --lts
-fi
-
 ### Install bun
 echo -e "\n\n>>> Checking for bun..."
 if [ -x "$(command -v bun)" ]; then

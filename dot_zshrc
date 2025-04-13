@@ -2,14 +2,12 @@ if [ -n "${ZSH_DEBUGRC+1}" ]; then
     zmodload zsh/zprof
 fi
 
-# NVM options for the zsh-nvm plugin
-export NVM_COMPLETION=true
-export NVM_LAZY_LOAD=true
-export NVM_AUTO_USE=true
-
 # Antidote - zsh plugin manager
 source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
 antidote load
+
+# FNM - Node version manager
+eval "$(fnm env --use-on-cd --version-file-strategy=recursive)"
 
 # Run fastfetch before we do anything else
 fastfetch
