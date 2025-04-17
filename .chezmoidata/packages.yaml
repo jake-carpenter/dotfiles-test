@@ -18,6 +18,7 @@ packages:
         - "eza"
         - "fastlane"
         - "fastfetch"
+        - "fish"
         - "fnm"
         - "fzf"
         - "gh"
