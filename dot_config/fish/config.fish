@@ -1,23 +1,10 @@
 set -gx PATH /usr/local/bin $PATH
 
-if status is-interactive
-end
-
 # pnpm
 set -gx PNPM_HOME /Users/jake/Library/pnpm
 if not string match -q -- $PNPM_HOME $PATH
-    set -gx PATH "$PNPM_HOME" $PATH
+    fish_add_path "$PNPM_HOME"
 end
-# pnpm end
-
-# bun
-set --export BUN_INSTALL "$HOME/.bun"
-
-# dnvm
-#update_dotnet_paths
-#if test -e ~/Library/Application\ Support/dnvm/env
-#    #    exec bash -c ". ~/Library/Application\ Support/dnvm/env; exec fish"
-#end
 
 # fnm (Node version manager)
 eval "$(fnm env --use-on-cd --version-file-strategy=recursive)"
@@ -43,13 +30,21 @@ fish_add_path -gP "$HOMEBREW_PREFIX/bin" "$HOMEBREW_PREFIX/sbin"
 set -gx MANPATH "$HOMEBREW_PREFIX/share/man" $MANPATH
 ! set -q INFOPATH; and set INFOPATH ''
 set -gx INFOPATH "$HOMEBREW_PREFIX/share/info" $INFOPATH
+set -gx HOMEBREW_NO_AUTO_UPDATE 1
 
 # my env vars
 set -gx EDITOR hx
 set -gx VISUAL hx
 set -gx GITIN_LINESIZE 20
-set -gx HOMEBREW_NO_AUTO_UPDATE 1
 
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
-set --export PATH $BUN_INSTALL/bin $PATH
+fish_add_path $BUN_INSTALL/bin
+
+fish_add_path "$HOME/Library/Application Support/dnvm"
+
+# abbr (aliases)
+abbr -a vim hx
+abbr -a p pnpm
+abbr -a px pnpx
+abbr -a bx bunx
