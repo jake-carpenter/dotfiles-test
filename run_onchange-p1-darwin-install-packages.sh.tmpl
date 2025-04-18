@@ -1,13 +1,26 @@
 {{ if eq .chezmoi.os "darwin" -}}
 #!/bin/zsh
 
-echo '\n\n>>> Tapping formulae...'
-brew tap isacikgoz/taps
-brew tap eth-p/software
-brew tap osx-cross/avr
-brew tap qmk/qmk
+# Brew is macOS specific
 
-echo '\n\n>>> Installing common brew packages...'
+echo '>>> 🚀 Tapping formulae...'
+taps=(
+{{ range .packages.darwin.common.taps -}}
+{{ . | quote }}
+{{ end -}}
+)
+
+
+for tap in $taps; do
+  if ! brew tap 2>/dev/null | grep -q $tap; then
+	echo "  ❌ $tap"
+	brew tap $tap
+  else
+   echo "  ✅ $tap"
+  fi
+done
+
+echo '\n>>> 🚀 Installing common brew packages...'
 
 brew bundle --file=/dev/stdin <<EOF
 {{ range .packages.darwin.common.brews -}}
@@ -20,7 +33,7 @@ EOF
 
 {{ if ne .chezmoi.config.destDir "/Users/a089947" }}
 
-echo '\n\n>>> Installing home-only brew packages...'
+echo '\n>>> 🚀 Installing home-only brew packages...'
 
 brew bundle --file=/dev/stdin <<EOF
 {{ range .packages.darwin.home.brews -}}
@@ -37,9 +50,30 @@ EOF
 #!/bin/bash
 {{ end }}
 
-echo -e "\n\n>>> Installing npm packages:"
-{{ range .packages.npm.common }}
-echo -e "  - {{ . }}"
-{{ end }}
+# NPM packages
+packages=(
+{{ range .packages.npm.common -}}
+{{ . | quote }}
+{{ end -}}
+)
 
-npm install --global {{ range .packages.npm.common -}} {{ . | quote }} {{ end -}}
+missing_packages=()
+
+echo "\n>>> 🚀 Checking for missing NPM packages..."
+
+for package in $packages; do
+  if ! npm list $package -g --parseable 2>/dev/null | grep -q $package; then
+    echo "  ❌ $package"
+    missing_packages+=($package)
+  else
+    echo "  ✅ $package"
+  fi
+done
+
+if [[ ${#missing_packages[@]} -gt 0 ]]; then
+  echo "\n>>> 🚀 Installing missing packages..."
+  npm -g install ${missing_packages[@]}
+  echo "  ✅ All missing packages have been installed."
+else
+  echo "\n👍 All packages are already installed."
+fi

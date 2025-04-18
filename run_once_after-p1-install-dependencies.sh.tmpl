@@ -11,17 +11,6 @@ else
   curl -fsSL https://bun.sh/install | bash
 fi
 
-### Install bun
-echo -e "\n\n>>> Checking for bun..."
-if [ -x "$(command -v bun)" ]; then
-  bun_version=$(bun --version)
-  echo -e "  Founding existing bun installation: $bun_version"
-else
-  echo -e "No existing installation found"
-  echo -e "\n\n>>> Installing bun..."
-  curl -fsSL https://bun.sh/install | bash
-fi
-
 ### Install pnpm
 echo -e "\n\n>>> Checking for pnpm..."
 if [ -x "$(command -v pnpm)" ]; then

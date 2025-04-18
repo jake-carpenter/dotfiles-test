@@ -2,6 +2,11 @@
 packages:
   darwin:
     common:
+      taps:
+        - isacikgoz/taps
+        - eth-p/software
+        - osx-cross/avr
+        - qmk/qmk
       brews:
         - "antidote"
         - "bat"
@@ -48,6 +53,7 @@ packages:
         - "font-ubuntu-sans-nerd-font"
         - "zulu@17"
     home:
+      taps:
       brews:
         - "avr-binutils"
         - "avr-gcc@8"
