@@ -1,19 +1,5 @@
 set -gx PATH /usr/local/bin $PATH
 
-# pnpm
-set -gx PNPM_HOME /Users/jake/Library/pnpm
-if not string match -q -- $PNPM_HOME $PATH
-    fish_add_path "$PNPM_HOME"
-end
-
-# fnm (Node version manager)
-eval "$(fnm env --use-on-cd --version-file-strategy=recursive)"
-
-# Android
-set -gx JAVA_HOME /Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
-set -gx ANDROID_SDK_ROOT $HOME/Library/Android/sdk
-set -gx ANDROID_HOME $ANDROID_SDK_ROOT
-
 # Homebrew
 # https://github.com/orgs/Homebrew/discussions/4412#discussioncomment-8651316
 if test -d /home/linuxbrew/.linuxbrew # Linux
@@ -31,6 +17,20 @@ set -gx MANPATH "$HOMEBREW_PREFIX/share/man" $MANPATH
 ! set -q INFOPATH; and set INFOPATH ''
 set -gx INFOPATH "$HOMEBREW_PREFIX/share/info" $INFOPATH
 set -gx HOMEBREW_NO_AUTO_UPDATE 1
+
+# pnpm
+set -gx PNPM_HOME $HOME/Library/pnpm
+if not string match -q -- $PNPM_HOME $PATH
+    fish_add_path "$PNPM_HOME"
+end
+
+# fnm (Node version manager)
+eval "$(fnm env --use-on-cd --version-file-strategy=recursive)"
+
+# Android
+set -gx JAVA_HOME /Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
+set -gx ANDROID_SDK_ROOT $HOME/Library/Android/sdk
+set -gx ANDROID_HOME $ANDROID_SDK_ROOT
 
 # my env vars
 set -gx EDITOR hx
