@@ -1,3 +1,3 @@
 function lt
-    eza --icons --tree
+    eza --icons -a --tree $argv
 end

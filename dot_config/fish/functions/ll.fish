@@ -1,3 +1,3 @@
-function ll --wraps=ls
-    eza --icons -l -a --git --no-user
+function ll
+    eza --icons -l -a --git --no-user $argv
 end
