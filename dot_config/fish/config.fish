@@ -41,6 +41,10 @@ set -gx GITIN_LINESIZE 20
 set --export BUN_INSTALL "$HOME/.bun"
 fish_add_path $BUN_INSTALL/bin
 
+# cargo (Rust)
+fish_add_path "$HOME/.cargo/bin"
+
+# dnvm (.NET)
 fish_add_path "$HOME/Library/Application Support/dnvm"
 
 # abbr (aliases)
