@@ -6,7 +6,7 @@ function dev_clean
   set -a rules 'dist,release,ios,android@package.json'
 
   # Node
-  set -a rules 'node-modules'
+  set -a rules 'node_modules'
 
   if test -z "$argv[1]"
     set cwd .
