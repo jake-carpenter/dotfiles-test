@@ -52,3 +52,8 @@ abbr -a vim hx
 abbr -a p pnpm
 abbr -a px pnpx
 abbr -a bx bunx
+abbr -a gi git
+abbr -a gti git
+abbr -a gb "gitin branch"
+abbr -a gs "gitin status"
+abbr -a gl "gitin log"
