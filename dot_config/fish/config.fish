@@ -18,6 +18,8 @@ set -gx MANPATH "$HOMEBREW_PREFIX/share/man" $MANPATH
 set -gx INFOPATH "$HOMEBREW_PREFIX/share/info" $INFOPATH
 set -gx HOMEBREW_NO_AUTO_UPDATE 1
 
+fish_add_path $HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin
+
 # pnpm
 set -gx PNPM_HOME $HOME/Library/pnpm
 if not string match -q -- $PNPM_HOME $PATH
