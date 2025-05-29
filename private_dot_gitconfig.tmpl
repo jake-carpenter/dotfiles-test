@@ -99,6 +99,7 @@ prompt = false
   diffFilter = delta --tabs 4 --color-only
 
 [alias]
+  aliases = "!git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /"
   co = checkout
   ci = commit
   amend = commit --amend --edit
