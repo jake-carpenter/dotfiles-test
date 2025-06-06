@@ -33,6 +33,8 @@ eval "$(fnm env --use-on-cd --version-file-strategy=recursive)"
 set -gx JAVA_HOME /Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
 set -gx ANDROID_SDK_ROOT $HOME/Library/Android/sdk
 set -gx ANDROID_HOME $ANDROID_SDK_ROOT
+fish_add_path $ANDROID_HOME
+fish_add_path $ANDROID_HOME/platform-tools
 
 # my env vars
 set -gx EDITOR hx
