@@ -61,3 +61,16 @@ abbr -a gti git
 abbr -a gb "gitin branch"
 abbr -a gs "gitin status"
 abbr -a gl "gitin log"
+
+{{- if eq .chezmoi.config.destDir "/Users/a089947" }}
+
+# [WORK] CA Cert configuration so Netskope doesn't break things with self-signed certs
+set -gx NODE_EXTRA_CA_CERTS "/Library/Application Support/Netskope/STAgent/data/nscacert_combined.pem"
+set -gx REQUESTS_CA_BUNDLE "/Library/Application Support/Netskope/STAgent/data/nscacert_combined.pem"
+set -gx CURL_CA_BUNDLE "/Library/Application Support/Netskope/STAgent/data/nscacert_combined.pem"
+set -gx GIT_SSL_CAPATH "/Library/Application Support/Netskope/STAgent/data/nscacert_combined.pem"
+
+# Quiets Kiota output during dotnet build
+export KIOTA_TUTORIAL_ENABLED=0
+
+{{- end }}
