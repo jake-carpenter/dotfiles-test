@@ -1,16 +1,9 @@
 {{- if eq .chezmoi.config.destDir "/Users/a089947" -}}
-[user]
-  name = Jake Carpenter
-  email = jcarpenter@mwiah.com
 
 [http]
   sslVerify = false
 
 {{- else -}}
-
-[user]
-  name = Jake Carpenter
-  email = jake@jakecarpenter.dev
 
 [user]
   signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAZrbQ9/KiToUmY5ybBtSIpklB5MNUgYRYOnUgf0o9US
@@ -25,6 +18,10 @@
   gpgsign = true
 
 {{- end }}
+
+[user]
+  name = Jake Carpenter
+  email = jake@jakecarpenter.dev
 
 [difftool "Kaleidoscope"]
 cmd = "ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\""
