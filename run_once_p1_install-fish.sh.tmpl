@@ -22,7 +22,6 @@ if ! command -v fish &> /dev/null; then
   {{ if eq .chezmoi.os "darwin" }}
     brew install fish
     grep -q "/opt/homebrew/bin/fish" /etc/shells || echo "/opt/homebrew/bin/fish" | sudo tee -a /etc/shells
-    chsh -s /opt/homebrew/bin/fish
   {{ else }}
     echo -e "\n  ⚠️ Please install fish shell manually for your operating system"
     exit 1
