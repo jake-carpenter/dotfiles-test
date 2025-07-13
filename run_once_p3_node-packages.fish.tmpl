@@ -9,14 +9,14 @@
 {{ end }}
 
 # Desktop profile
-{{ if has .chezmoi.hostname .machines.desktop }}
+{{ if has .chezmoi.hostname .systems.desktop }}
   {{ range .packages.npm.desktop }}
     set -a packages {{ . | quote }}
   {{ end -}}
 {{ end }}
 
 # Personal profile
-{{ if has .chezmoi.hostname .machines.personal }}
+{{ if has .chezmoi.hostname .systems.personal }}
   {{ range .packages.npm.personal }}
     set -a packages {{ . | quote }}
   {{ end -}}
@@ -36,7 +36,7 @@ for package in $packages
 end
 
 if test (count $missing_packages) -gt 0
-  echo -e "\n  >>> 🚀 Installing missing packages..."
+  echo -e "\n  🚀 Installing missing packages..."
   npm -g install $missing_packages
   echo -e "\n  🎉 All missing packages have been installed."
 else

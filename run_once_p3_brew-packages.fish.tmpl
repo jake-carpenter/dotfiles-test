@@ -15,7 +15,7 @@
 {{ end }}
 
 # Desktop profile
-{{ if has .chezmoi.hostname .machines.desktop }}
+{{ if has .chezmoi.hostname .systems.desktop }}
   set -a profile desktop
 
   {{ range .packages.darwin.desktop.taps }}
@@ -30,7 +30,7 @@
 {{ end }}
 
 # Personal profile
-{{ if has .chezmoi.hostname .machines.personal }}
+{{ if has .chezmoi.hostname .systems.personal }}
   set -a profile personal
 
   {{ range .packages.darwin.personal.taps }}
