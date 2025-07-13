@@ -5,10 +5,8 @@ packages:
       taps:
         - isacikgoz/taps
         - eth-p/software
-        - osx-cross/avr
         - qmk/qmk
       brews:
-        - "antidote"
         - "bat"
         - "bat-extras"
         - "bat-extras-batdiff"
@@ -59,9 +57,7 @@ packages:
         - "avr-gcc@8"
         - "qmk"
       casks:
-        - "airbuddy"
         - "arc"
-        - "bartender"
         - "daisydisk"
         - "devutils"
         - "expo-orbit"
@@ -73,7 +69,6 @@ packages:
         - "obs"
         - "orbstack"
         - "pearcleaner"
-        - "polypane"
         - "postman"
         - "proxyman"
         - "qmk-toolbox"
