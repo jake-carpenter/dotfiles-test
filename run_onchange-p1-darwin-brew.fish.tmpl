@@ -1,0 +1,71 @@
+#!/usr/bin/env fish
+
+# Base profile
+{{ range .packages.darwin.base.taps }}
+  set -a taps {{ . | quote }}
+{{ end }}
+{{ range .packages.darwin.base.brews }}
+  set -a brews {{ . | quote }}
+{{ end }}
+{{ range .packages.darwin.base.casks }}
+  set -a casks {{ . | quote }}
+{{ end }}
+
+# Desktop profile
+{{ if has .chezmoi.hostname .machines.desktop }}
+  set -a profile desktop
+
+  {{ range .packages.darwin.desktop.taps }}
+    set -a taps {{ . | quote }}
+  {{ end -}}
+  {{ range .packages.darwin.desktop.brews }}
+    set -a brews {{ . | quote }}
+  {{ end }}
+  {{ range .packages.darwin.desktop.casks }}
+    set -a casks {{ . | quote }}
+  {{ end }}
+{{ end }}
+
+# Personal profile
+{{ if has .chezmoi.hostname .machines.personal }}
+  set -a profile personal
+
+  {{ range .packages.darwin.personal.taps }}
+    set -a taps {{ . | quote }}
+  {{ end -}}
+  {{ range .packages.darwin.personal.brews }}
+    set -a brews {{ . | quote }}
+  {{ end }}
+  {{ range .packages.darwin.personal.casks }}
+    set -a casks {{ . | quote }}
+  {{ end }}
+{{ end }}
+
+echo -e "\n 💡 This system is in the following profiles: "(set_color green)"base"(test -n "$profile"; and echo ", "(string join ", " $profile); or echo "")(set_color normal)
+
+# Formulae
+echo -e '\n 🚀 Tapping formulae...'
+
+for tap in $taps
+  if not brew tap 2>/dev/null | grep -q $tap
+    echo "  ❌ $tap"
+    brew tap $tap
+  else
+    echo "  ✅ $tap"
+  end
+end
+
+# Brew packages
+echo -e '\n 🚀 Installing base brew packages...'
+
+# Build brewfile content from the collected package lists
+set brewfile_content ""
+for brew in $brews
+  set brewfile_content "$brewfile_content\nbrew \"$brew\""
+end
+for cask in $casks
+  set brewfile_content "$brewfile_content\ncask \"$cask\""
+end
+
+echo -e $brewfile_content | brew bundle --file=/dev/stdin
+

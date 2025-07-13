@@ -1,11 +1,10 @@
 # yaml-language-server: $schema=packages:
 packages:
   darwin:
-    common:
+    base:
       taps:
         - isacikgoz/taps
         - eth-p/software
-        - qmk/qmk
       brews:
         - "bat"
         - "bat-extras"
@@ -35,11 +34,15 @@ packages:
         - "pyenv"
         - "python-lsp-server"
         - "rbenv"
+        - "watchman"
+        - "yaml-language-server"
+      casks:
+    desktop:
+      taps:
+      brews:
         - "rust"
         - "rust-analyzer"
         - "superfile"
-        - "watchman"
-        - "yaml-language-server"
       casks:
         - "1password-cli"
         - "bettertouchtool"
@@ -50,14 +53,6 @@ packages:
         - "font-ubuntu-nerd-font"
         - "font-ubuntu-sans-nerd-font"
         - "zulu@17"
-    home:
-      taps:
-      brews:
-        - "avr-binutils"
-        - "avr-gcc@8"
-        - "qmk"
-      casks:
-        - "arc"
         - "daisydisk"
         - "devutils"
         - "expo-orbit"
@@ -71,15 +66,25 @@ packages:
         - "pearcleaner"
         - "postman"
         - "proxyman"
-        - "qmk-toolbox"
         - "raycast"
         - "stats"
         - "visual-studio-code"
         - "warp"
-        - "xcodes"
+        - "xcodes-app"
         - "zed"
+    personal:
+      taps:
+        - qmk/qmk
+      brews:
+        - "avr-binutils"
+        - "avr-gcc@8"
+        - "qmk"
+      casks:
+        - "arc"
+        - "qmk-toolbox"
+
   npm:
-    common:
+    base:
       - "@microsoft/compose-language-service"
       - "@tailwindcss/language-server"
       - "bash-language-server"
@@ -90,3 +95,5 @@ packages:
       - "typescript-language-server"
       - "typescript-svelte-plugin"
       - "vscode-langservers-extracted"
+    desktop:
+    personal:
