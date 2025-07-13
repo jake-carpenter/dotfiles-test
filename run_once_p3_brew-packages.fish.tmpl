@@ -1,5 +1,8 @@
 #!/usr/bin/env fish
 
+# Hash the packages file to trigger a change here when there's a change there.
+# packages.yaml hash: {{ include ".chezmoidata/packages.yaml" | sha256sum }}
+
 # Base profile
 {{ range .packages.darwin.base.taps }}
   set -a taps {{ . | quote }}
@@ -41,10 +44,10 @@
   {{ end }}
 {{ end }}
 
-echo -e "\n 💡 This system is in the following profiles: "(set_color green)"base"(test -n "$profile"; and echo ", "(string join ", " $profile); or echo "")(set_color normal)
+echo -e "\n  💡 This system is in the following profiles: "(set_color green)"base"(test -n "$profile"; and echo ", "(string join ", " $profile); or echo "")(set_color normal)
 
 # Formulae
-echo -e '\n 🚀 Tapping formulae...'
+echo -e '\n  🚀 Tapping formulae...'
 
 for tap in $taps
   if not brew tap 2>/dev/null | grep -q $tap
@@ -56,7 +59,7 @@ for tap in $taps
 end
 
 # Brew packages
-echo -e '\n 🚀 Installing base brew packages...'
+echo -e '\n  🚀 Installing base brew packages...'
 
 # Build brewfile content from the collected package lists
 set brewfile_content ""
@@ -68,4 +71,3 @@ for cask in $casks
 end
 
 echo -e $brewfile_content | brew bundle --file=/dev/stdin
-

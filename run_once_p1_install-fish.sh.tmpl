@@ -1,10 +1,11 @@
 #!/bin/bash
 
 ### Priority 1 - Install fish
-echo -e "\n  🔎 Verifying fish..."
+echo -e "\n  🔎 Verifying fish"
 
-# Install Brew if it's not available
 {{ if eq .chezmoi.os "darwin" }}
+
+  # Install Brew if it's not available
   if ! command -v brew &> /dev/null; then
     echo -e "  🚀 Installing homebrew..."
     echo -e "  🚨 \033[31mYOU WIlL BE ASKED FOR YOUR PASSWORD\033[0m"

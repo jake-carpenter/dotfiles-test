@@ -1,5 +1,7 @@
 #!/usr/bin/env fish
 
+# Hash the packages file to trigger a change here when there's a change there.
+# packages.yaml hash: {{ include ".chezmoidata/packages.yaml" | sha256sum }}
 
 # Base profile
 {{ range .packages.npm.base }}
