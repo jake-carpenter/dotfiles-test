@@ -22,23 +22,23 @@
   {{ end -}}
 {{ end }}
 
-echo -e "\n>>> 🚀 Checking for missing NPM packages..."
+echo -e "\n🚀 Checking for missing NPM packages\n"
 
 set missing_packages
 
 for package in $packages
   if not npm list $package -g --parseable 2>/dev/null | grep -q $package
-    echo "  ❌ $package"
+    echo "❌ $package"
     set -a missing_packages $package
   else
-    echo "  ✅ $package"
+    echo "✅ $package"
   end
 end
 
 if test (count $missing_packages) -gt 0
-  echo -e "\n  🚀 Installing missing packages..."
+  echo -e "\n🚀 Installing missing packages\n"
   npm -g install $missing_packages
-  echo -e "\n  🎉 All missing packages have been installed."
+  echo -e "\n🎉 All missing packages have been installed.\n"
 else
-  echo -e "\n  👍 All packages are already installed."
+  echo -e "\n👍 All packages are already installed.\n"
 end

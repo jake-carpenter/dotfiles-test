@@ -44,22 +44,22 @@
   {{ end }}
 {{ end }}
 
-echo -e "\n  💡 This system is in the following profiles: "(set_color green)"base"(test -n "$profile"; and echo ", "(string join ", " $profile); or echo "")(set_color normal)
+echo -e "\n💡 This system is in the following profiles: "(set_color green)"base"(test -n "$profile"; and echo ", "(string join ", " $profile); or echo "")(set_color normal)
 
 # Formulae
-echo -e '\n  🚀 Tapping formulae...'
+echo -e '\n🚀 Tapping formulae\n'
 
 for tap in $taps
   if not brew tap 2>/dev/null | grep -q $tap
-    echo "  ❌ $tap"
+    echo "❌ $tap"
     brew tap $tap
   else
-    echo "  ✅ $tap"
+    echo "✅ $tap"
   end
 end
 
 # Brew packages
-echo -e '\n  🚀 Installing base brew packages...'
+echo -e '\n🚀 Installing base brew packages\n'
 
 # Build brewfile content from the collected package lists
 set brewfile_content ""
