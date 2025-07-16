@@ -6,13 +6,6 @@ packages:
         - eth-p/software
       brews:
         - "bat"
-        - "bat-extras"
-        - "bat-extras-batdiff"
-        - "bat-extras-batgrep"
-        - "bat-extras-batman"
-        - "bat-extras-batpipe"
-        - "bat-extras-batwatch"
-        - "bat-extras-prettybat"
         - "btop"
         - "ca-certificates"
         - "docker"
