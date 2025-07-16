@@ -1,44 +1,47 @@
-#!/usr/bin/env fish
+#!/usr/bin/env bash
 
 # Hash the packages file to trigger a change here when there's a change there.
 # packages.yaml hash: {{ include ".chezmoidata/packages.yaml" | sha256sum }}
 
+# Initialize packages array
+packages=()
+
 # Base profile
 {{ range .packages.npm.base }}
-  set -a packages {{ . | quote }}
+  packages+=({{ . | quote }})
 {{ end }}
 
 # Desktop profile
 {{ if has .chezmoi.hostname .systems.desktop }}
   {{ range .packages.npm.desktop }}
-    set -a packages {{ . | quote }}
+    packages+=({{ . | quote }})
   {{ end -}}
 {{ end }}
 
 # Personal profile
 {{ if has .chezmoi.hostname .systems.personal }}
   {{ range .packages.npm.personal }}
-    set -a packages {{ . | quote }}
+    packages+=({{ . | quote }})
   {{ end -}}
 {{ end }}
 
 echo -e "\n🚀 Checking for missing NPM packages\n"
 
-set missing_packages
+missing_packages=()
 
-for package in $packages
-  if not npm list $package -g --parseable 2>/dev/null | grep -q $package
+for package in "${packages[@]}"; do
+  if ! npm list "$package" -g --parseable 2>/dev/null | grep -q "$package"; then
     echo "❌ $package"
-    set -a missing_packages $package
+    missing_packages+=("$package")
   else
     echo "✅ $package"
-  end
-end
+  fi
+done
 
-if test (count $missing_packages) -gt 0
+if [[ ${#missing_packages[@]} -gt 0 ]]; then
   echo -e "\n🚀 Installing missing packages\n"
-  npm -g install $missing_packages
+  npm -g install "${missing_packages[@]}"
   echo -e "\n🎉 All missing packages have been installed.\n"
 else
   echo -e "\n👍 All packages are already installed.\n"
-end
+fi
