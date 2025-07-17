@@ -62,8 +62,7 @@ fi
 # fisher
 if ! command -v fisher &> /dev/null; then
   echo -e "🚀 Installing fisher\n"
-  fish -c "curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source"
-  fish -c "fisher install jorgebucaran/fisher"
+  fish -c "curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fish -c 'fisher install jorgebucaran/fisher'"
 fi
 
 # Hash fish_plugins to trigger a change here when there's a change there.

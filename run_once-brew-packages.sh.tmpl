@@ -3,7 +3,7 @@
 # Hash the packages file to trigger a change here when there's a change there.
 # packages.yaml hash: {{ include ".chezmoidata/packages.yaml" | sha256sum }}
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
+source $HOME/.zprofile
 
 # Initialize arrays
 taps=()
