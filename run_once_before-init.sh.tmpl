@@ -47,7 +47,7 @@ if ! command -v dnvm &> /dev/null; then
   curl --proto '=https' -sSf https://dnvm.net/install.sh | sh
 fi
 
-# Install fnm (node)
+# Install fnm (node) - need this before fish starts
 if ! command -v fnm &> /dev/null; then
   echo -e "\n🚀 Installing fnm\n"
   curl -fsSL https://fnm.vercel.app/install | bash -s -- --skip-shell
@@ -57,13 +57,13 @@ fi
 if ! command -v node &> /dev/null; then
   echo -e "\n🚀 Installing latest LTS NodeJS\n"
   fnm install --lts
-  fnm use --lts
 fi
 
 # fisher
 if ! command -v fisher &> /dev/null; then
   echo -e "🚀 Installing fisher\n"
-  fish -c "curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source; and fisher install jorgebucaran/fisher"
+  fish -c "curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source"
+  fish -c "fisher install jorgebucaran/fisher"
 fi
 
 # Hash fish_plugins to trigger a change here when there's a change there.
