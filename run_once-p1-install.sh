@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 set -e
 echo -e "\t\033[90m[debug]: Ran from run_once-p1-install.sh\033[0m"
-
 # Install Homebrew if missing
 if ! command -v brew >/dev/null; then
   echo
@@ -94,4 +93,4 @@ echo -e "✅ Step 1 of initialization complete\n"
 echo -e "\033[33mRun the following commands to apply further steps:\033[0m\n"
 echo "chmod +x apply_root.sh"
 echo "bash apply_root.sh"
-echo -e "\n"
+echo
