@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 set -e
-echo -e "\t\033[90m[debug]: Ran from run_once-p1-install.sh\033[0m"
+
 # Install Homebrew if missing
 if ! command -v brew >/dev/null; then
   echo
   echo "🚀 Installing homebrew"
+  echo -e "\033[90m[debug]: Ran from run_once-p1-install.sh\033[0m"
   echo "─────────────────────────────────────────"
   echo "🚨 YOU WILL BE ASKED FOR YOUR PASSWORD"
   echo
