@@ -81,4 +81,4 @@ for cask in $casks
   set brewfile_content "$brewfile_content\ncask \"$cask\""
 end
 
-echo -e "$brewfile_content" | brew bundle --file=/dev/stdins
+echo -e "$brewfile_content" | brew bundle --file=-
