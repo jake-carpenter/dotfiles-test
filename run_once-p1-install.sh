@@ -89,9 +89,11 @@ if ! command -v chezmoi >/dev/null; then
   echo "✅ chezmoi installed successfully"
 fi
 
+chmod +x apply_root.sh
+
 echo "─────────────────────────────────────────"
 echo -e "✅ Step 1 of initialization complete\n"
 echo -e "\033[33mRun the following commands to apply further steps:\033[0m\n"
-echo "chmod +x apply_root.sh"
+echo "source ~/.zshrc"
 echo "bash apply_root.sh"
 echo
