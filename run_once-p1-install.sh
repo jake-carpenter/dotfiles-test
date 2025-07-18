@@ -8,7 +8,7 @@ if ! command -v brew >/dev/null; then
   echo -e "🚨 \033[31mYOU WIlL BE ASKED FOR YOUR PASSWORD\033[0m"
   echo -e "----------------------------------------------------------------------"
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  echo "eval \"\$(\/opt\/homebrew\/bin\/brew shellenv)\"" >> "$HOME"/.zprofile
+  echo "eval \"\$(\/opt\/homebrew\/bin\/brew shellenv)\"" >> "$HOME"/.zshrc
   echo -e "----------------------------------------------------------------------"
   echo -e "Homebrew installed successfully."
   echo -e "----------------------------------------------------------------------"
@@ -20,8 +20,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # Install fish if missing
 if ! command -v fish >/dev/null; then
   echo -e "----------------------------------------------------------------------"
-  echo -e "🚀 Installing fish\n"
-  echo -e "🚨 \033[31mYOU WIlL BE ASKED FOR YOUR PASSWORD\033[0m"
+  echo -e "🚀 Installing fish"
   echo -e "----------------------------------------------------------------------"
   brew install fish
   echo -e "----------------------------------------------------------------------"
@@ -48,6 +47,10 @@ if ! command -v bun >/dev/null; then
   curl -fsSL https://bun.sh/install | bash
   # Add bun to PATH for this session
   export PATH="$HOME/.bun/bin:$PATH"
+  
+  # Add bun to .zshrc
+  echo "export BUN_INSTALL=\"$HOME\/.bun\"" >> "$HOME/.zshrc"
+  echo "export PATH=\"$BUN_INSTALL/bin:\$PATH\"" >> "$HOME/.zshrc"
   echo -e "----------------------------------------------------------------------"
   echo -e "bun installed successfully."
   echo -e "----------------------------------------------------------------------"
@@ -103,4 +106,3 @@ fi
 # Re-apply chezmoi with the second root (full dotfiles)
 echo "Running second chezmoi apply for full dotfiles..."
 chezmoi --source $HOME/.local/share/chezmoi/roots/macos apply
-
