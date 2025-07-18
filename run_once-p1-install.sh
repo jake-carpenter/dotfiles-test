@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -e
 
 # Install Homebrew if missing
@@ -73,6 +73,7 @@ if [ ! -f "$HOME/.config/fish/functions/fisher.fish" ]; then
   echo -e "🚀 Installing fisher"
   echo -e "----------------------------------------------------------------------"
   brew install fisher
+  fish -c "fisher update"
   echo -e "----------------------------------------------------------------------"
   echo -e "fisher installed successfully."
   echo -e "----------------------------------------------------------------------"
