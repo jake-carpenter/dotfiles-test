@@ -102,7 +102,3 @@ if ! command -v chezmoi >/dev/null; then
   echo -e "chezmoi installed successfully."
   echo -e "----------------------------------------------------------------------"
 fi
-
-# Re-apply chezmoi with the second root (full dotfiles)
-echo "Running second chezmoi apply for full dotfiles..."
-chezmoi --source $HOME/.local/share/chezmoi/roots/macos apply
