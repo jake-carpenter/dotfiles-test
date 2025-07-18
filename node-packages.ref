@@ -1,4 +1,4 @@
-# #!/usr/bin/env bash
+##!/usr/bin/env bash
 
 # # Hash the packages file to trigger a change here when there's a change there.
 # # packages.yaml hash: {{ include ".chezmoidata/packages.yaml" | sha256sum }}

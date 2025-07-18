@@ -73,7 +73,6 @@ if [ ! -f "$HOME/.config/fish/functions/fisher.fish" ]; then
   echo -e "🚀 Installing fisher"
   echo -e "----------------------------------------------------------------------"
   brew install fisher
-  fish -c "fisher update"
   echo -e "----------------------------------------------------------------------"
   echo -e "fisher installed successfully."
   echo -e "----------------------------------------------------------------------"
@@ -101,8 +100,7 @@ if ! command -v chezmoi >/dev/null; then
   echo -e "----------------------------------------------------------------------"
 fi
 
-# Now re-apply chezmoi with the second root (full dotfiles)
-# echo "Running second chezmoi apply for full dotfiles..."
-# chezmoi --source $HOME/.local/share/chezmoi/macos apply
+# Re-apply chezmoi with the second root (full dotfiles)
+echo "Running second chezmoi apply for full dotfiles..."
+chezmoi --source $HOME/.local/share/chezmoi/roots/macos apply
 
-# echo "Bootstrap complete. You can now start fish shell."
