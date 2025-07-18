@@ -2,5 +2,6 @@
 
 {{ if eq .chezmoi.os "darwin" }}
   echo "Applying macOS dotfiles"
+  echo -e "\t\033[90m[debug]: Ran from apply_root.sh\033[0m"
   chezmoi --source $HOME/.local/share/chezmoi/roots/macos apply
 {{ end }}

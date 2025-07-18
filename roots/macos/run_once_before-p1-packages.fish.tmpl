@@ -1,5 +1,6 @@
 #!/usr/bin/env fish
-echo "this is run_once_before-p1-packages.fish.tmpl"
+
+echo -e "\t"(set_color brgrey)"[debug]: Ran from apply_root.sh"(set_color normal)
 
 # Hash the packages file to trigger a change here when there's a change there.
 # packages.yaml hash: {{ include ".chezmoidata/packages.yaml" | sha256sum }}

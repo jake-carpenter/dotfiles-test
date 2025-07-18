@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
 set -e
+echo -e "\t\033[90m[debug]: Ran from run_once-p1-install.sh\033[0m"
 
 # Install Homebrew if missing
 if ! command -v brew >/dev/null; then
-  echo -e "----------------------------------------------------------------------"
-  echo -e "🚀 Installing homebrew\n"
-  echo -e "🚨 \033[31mYOU WIlL BE ASKED FOR YOUR PASSWORD\033[0m"
-  echo -e "----------------------------------------------------------------------"
+  echo
+  echo "🚀 Installing homebrew"
+  echo "─────────────────────────────────────────"
+  echo "🚨 YOU WILL BE ASKED FOR YOUR PASSWORD"
+  echo
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   echo "eval \"\$(\/opt\/homebrew\/bin\/brew shellenv)\"" >> "$HOME"/.zshrc
-  echo -e "----------------------------------------------------------------------"
-  echo -e "Homebrew installed successfully."
-  echo -e "----------------------------------------------------------------------"
+  echo "✅ Homebrew installed successfully"
 fi
 
 # Setup Homebrew environment for this shell
@@ -19,31 +19,27 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Install fish if missing
 if ! command -v fish >/dev/null; then
-  echo -e "----------------------------------------------------------------------"
-  echo -e "🚀 Installing fish"
-  echo -e "----------------------------------------------------------------------"
+  echo
+  echo "🚀 Installing fish"
+  echo "─────────────────────────────────────────"
   brew install fish
-  echo -e "----------------------------------------------------------------------"
-  echo -e "Fish shell installed successfully."
-  echo -e "----------------------------------------------------------------------"
+  echo "✅ Fish shell installed successfully"
 fi
 
 # Install pnpm if missing
 if ! command -v pnpm >/dev/null; then
-  echo -e "----------------------------------------------------------------------"
-  echo -e "🚀 Installing pnpm"
-  echo -e "----------------------------------------------------------------------"
+  echo
+  echo "🚀 Installing pnpm"
+  echo "─────────────────────────────────────────"
   brew install pnpm
-  echo -e "----------------------------------------------------------------------"
-  echo -e "pnpm installed successfully."
-  echo -e "----------------------------------------------------------------------"
+  echo "✅ pnpm installed successfully"
 fi
 
 # Install bun if missing
 if ! command -v bun >/dev/null; then
-  echo -e "----------------------------------------------------------------------"
-  echo -e "🚀 Installing bun"
-  echo -e "----------------------------------------------------------------------"
+  echo
+  echo "🚀 Installing bun"
+  echo "─────────────────────────────────────────"
   curl -fsSL https://bun.sh/install | bash
   # Add bun to PATH for this session
   export PATH="$HOME/.bun/bin:$PATH"
@@ -51,54 +47,51 @@ if ! command -v bun >/dev/null; then
   # Add bun to .zshrc
   echo "export BUN_INSTALL=\"$HOME\/.bun\"" >> "$HOME/.zshrc"
   echo "export PATH=\"$BUN_INSTALL/bin:\$PATH\"" >> "$HOME/.zshrc"
-  echo -e "----------------------------------------------------------------------"
-  echo -e "bun installed successfully."
-  echo -e "----------------------------------------------------------------------"
+  echo "✅ bun installed successfully"
 fi
 
 # Install fnm if missing
 if ! command -v fnm >/dev/null; then
-  echo -e "----------------------------------------------------------------------"
-  echo -e "🚀 Installing fnm"
-  echo -e "----------------------------------------------------------------------"
+  echo
+  echo "🚀 Installing fnm"
+  echo "─────────────────────────────────────────"
   curl -fsSL https://fnm.vercel.app/install | bash -s -- --skip-shell
   # Source fnm environment for this session
   export PATH="$HOME/.fnm:$PATH"
   eval "$(fnm env)"
-  echo -e "----------------------------------------------------------------------"
-  echo -e "fnm installed successfully."
-  echo -e "----------------------------------------------------------------------"
+  echo "✅ fnm installed successfully"
 fi
 
 # fisher
 if [ ! -f "$HOME/.config/fish/functions/fisher.fish" ]; then
-  echo -e "----------------------------------------------------------------------"
-  echo -e "🚀 Installing fisher"
-  echo -e "----------------------------------------------------------------------"
+  echo
+  echo "🚀 Installing fisher"
+  echo "─────────────────────────────────────────"
   brew install fisher
-  echo -e "----------------------------------------------------------------------"
-  echo -e "fisher installed successfully."
-  echo -e "----------------------------------------------------------------------"
+  echo "✅ fisher installed successfully"
 fi
 
 # Install LTS NodeJS
 if ! command -v node &> /dev/null; then
-  echo -e "----------------------------------------------------------------------"
-  echo -e "🚀 Installing latest LTS NodeJS"
-  echo -e "----------------------------------------------------------------------"
+  echo
+  echo "🚀 Installing latest LTS NodeJS"
+  echo "─────────────────────────────────────────"
   fnm install --lts
-  echo -e "----------------------------------------------------------------------"
-  echo -e "NodeJS installed successfully."
-  echo -e "----------------------------------------------------------------------"
+  echo "✅ NodeJS installed successfully"
 fi
 
 # Install proper chezmoi
 if ! command -v chezmoi >/dev/null; then
-  echo -e "----------------------------------------------------------------------"
-  echo -e "🚀 Installing chezmoi"
-  echo -e "----------------------------------------------------------------------"
+  echo
+  echo "🚀 Installing chezmoi"
+  echo "─────────────────────────────────────────"
   brew install chezmoi
-  echo -e "----------------------------------------------------------------------"
-  echo -e "chezmoi installed successfully."
-  echo -e "----------------------------------------------------------------------"
+  echo "✅ chezmoi installed successfully"
 fi
+
+echo "─────────────────────────────────────────"
+echo -e "✅ Step 1 of initialization complete\n"
+echo -e "\033[33mRun the following commands to apply further steps:\033[0m\n"
+echo "chmod +x apply_root.sh"
+echo "bash apply_root.sh"
+echo -e "\n"
